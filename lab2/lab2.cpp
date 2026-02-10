@@ -7,13 +7,17 @@
 
 using namespace std;
 
+
 const int WIDTH = 100;
 const int HEIGHT = 30;
+
+
 const int V = 1;
+
+
 const int MOVE_DELAY = 100;
+
 const int CHANGE_DIR_SEC = 3;
-
-
 mutex printMutex;
 
 int randomDir() {
@@ -27,6 +31,7 @@ int randomDir() {
     return d;
 }
 
+
 class Rabbit {
 public:
     string name;
@@ -39,7 +44,8 @@ public:
         if (albino) {
             dx = 1;
             dy = 0;
-        } else {
+        }
+        else {
             dx = randomDir();
             dy = randomDir();
         }
@@ -80,7 +86,6 @@ int main() {
 
     threads.emplace_back(&Rabbit::move, Rabbit("Rabbit_1", 10, 5, false));
     threads.emplace_back(&Rabbit::move, Rabbit("Rabbit_2", 30, 15, false));
-
     threads.emplace_back(&Rabbit::move, Rabbit("Albino_1", 0, 10, true));
     threads.emplace_back(&Rabbit::move, Rabbit("Albino_2", WIDTH, 20, true));
 
